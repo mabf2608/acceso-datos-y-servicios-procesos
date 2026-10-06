@@ -1,0 +1,41 @@
+Dos clases: ProcessBuilder y Proccess.
+
+Process:   Clase abstracta para la gestión de los procesos ( en ejecucion)
+
+ProcessBuilder: Gestión de atributos del proceso
+
+1.- ProccessBuilder:  Una forma de obtener objetos de la clase process tanto en string como en lista.
+
+2.- RunTime. Otra forma de crear objetos de clase proccess A diferencia de proccessbuilder recibe un solo string con el comando  y los parámetros, en vez de un array de strings
+
+Ejemplo:
+
+  try {
+
+    ProcessBuilder pb = new ProcessBuilder("CMD", "/C", "DIR");
+    Process p = pb.start();
+ } catch (Exception e) {
+
+            e.printStackTrace();
+
+}
+
+Principales metodos en ProccessBuilder:
+
+   * start()      Inicia un proceso
+
+   * directory (FILE )   especifica un directorio de trabajo
+
+Principales metodos en Proccess:
+
+Exits code returned from the process executed
+int exitValue()
+Reads/writes output, error, and input streams to and from the process.
+InputStream getErrorStream()
+InputStream getInputStream()
+OutputStream getOutputStream()
+Checks to see if the invoking process is still running.
+Boolean isAlive()
+Waits for the invoking process to end. The integer value returned by the method is the exit code by the process. In another overloaded method, we can specify the wait time. This method returns true if the process has terminated and false if timeout has occurred.
+int waitFor()
+Boolean waitFor(long timeOut, TimeUnit unit)

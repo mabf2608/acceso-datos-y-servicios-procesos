@@ -1,1 +1,30 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Eclipse workspace
 eclipse-workspace/.metadata/
+
+# Compilados
+bin/
+target/
+out/
+
+# Java
+*.class
+*.jar
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.iml
+
+# VS Code
+.vscode/

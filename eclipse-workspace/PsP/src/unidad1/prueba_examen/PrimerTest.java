@@ -1,4 +1,4 @@
-package prueba_examen;
+package unidad1.prueba_examen;
 
 import java.io.File;
 import java.io.IOException;

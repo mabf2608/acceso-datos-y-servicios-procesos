@@ -1,4 +1,4 @@
-package ejercicio1;
+package unidad1.ejercicio1;
 
 import java.io.IOException;
 import java.util.Scanner;

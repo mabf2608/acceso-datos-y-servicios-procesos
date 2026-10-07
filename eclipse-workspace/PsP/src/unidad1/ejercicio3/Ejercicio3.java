@@ -1,4 +1,4 @@
-package ejercicio3;
+package unidad1.ejercicio3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

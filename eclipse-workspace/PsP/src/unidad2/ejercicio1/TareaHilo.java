@@ -7,23 +7,22 @@ public class TareaHilo implements Runnable {
 	public TareaHilo(String nombre)
 	{
 		this.nombreHilo = nombre;
-		System.out.printl("Creando " + nombreHilo);
+		System.out.println("Creando el hilo para atender a " + nombreHilo + ".\n");
 	}
 	
 	@Override
 	public void run() 
 	{
-		System.out.println("Ejecutando " + nombreHilo);
+		System.out.println("Atendiendo a " + nombreHilo + "...\n");
 		try {
-			for(int i = 1; i <= 5; i ++)
-			{
-				System.out.println("Hilo: " + nombreHilo + ", Contador:" + i);
-				Thread.sleep(50);
-			}
+			int duracion = (int) (Math.random() * (30000 - 20000 + 1)) + 20000;
+			Thread.sleep(duracion);
+			System.out.println("Se ha terminado de atender a " + nombreHilo + ", gracias por su paciencia.");
+			
 		} catch (InterruptedException e) {
-			System.out.println("El hilo " + nombreHilo + "fue interrumpido.");
+			System.out.println("El hilo que atendía a " + nombreHilo + ", fue interrumpido.\n");
 		}
-		System.out.println("Terminando " + nombreHilo);
+		System.out.println("Se ha cerrado el hilo que atendía a " + nombreHilo + ".\n");
 	}
 
 }

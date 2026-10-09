@@ -1,3 +1,5 @@
+//REALIZADO POR MIGUEL ÁNGEL BONILLA FERNÁNDEZ
+
 package com.ejemplo;
 
 import java.io.FileInputStream;
@@ -13,9 +15,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		Properties props = new Properties();
+		//Try con recurso File input stream para que lea el archivo config.properties
 		try (FileInputStream fis = new FileInputStream("config.properties")){
 			props.load(fis);
-			System.out.println("Fichero de propiedades cargado correctamente.");
+			System.out.println("Fichero de propiedades cargado correctamente. \n");
 			
 			String ip = props.getProperty("db.ip");
 			String puerto = props.getProperty("db.port");
@@ -23,14 +26,19 @@ public class Main {
 			String usuario = props.getProperty("db.user");
 			String password = props.getProperty("db.password");
 			
+			//Aquí creamos la URL y accedemos justo después
 			String url = "jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBd + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 			Connection conexion = DriverManager.getConnection(url, usuario, password);
 			
+			//Creamos el statement (es como una carretera) que conecta la BBDD con el codigo
 			Statement stmt = conexion.createStatement();
+			
+			//Creamos el sqlInsert y lo ejecutamos
 			String sqlInsert = "INSERT INTO clientes (nombre, email, saldo, fecha_alta) VALUES ('Miguel Ángel Bonilla', 'mabf@email.com', 450.00, '2026-04-09')";
 			stmt.executeUpdate(sqlInsert);
 			System.out.println("Cliente insertado con éxito.");
 			
+			//Creamos el sqlSelect que usaremos más adelante y lo ejecutamos con un bucle para que lea todos los datos
 			String sqlSelect = "SELECT * FROM clientes";
 			ResultSet rs = stmt.executeQuery(sqlSelect);
 			

@@ -8,8 +8,8 @@ import java.io.File;
 public class LanzadorProcesos {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		try 
+		
+		try (Scanner sc = new Scanner(System.in))
 		{
 			String home = System.getProperty("user.home");
 			File fApuntes = new File(home, "apuntes.txt");
@@ -50,6 +50,6 @@ public class LanzadorProcesos {
 		catch (InterruptedException e)
 		{
 			System.err.println("El hilo principal de Java fue interrumpido mientras esperaba.");
-		}finally {sc.close();}
+		}
 	}
 }

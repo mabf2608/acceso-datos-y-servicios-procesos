@@ -1,4 +1,4 @@
-package unidad1;
+package unidad1.ejercicio1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

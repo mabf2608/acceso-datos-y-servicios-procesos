@@ -12,24 +12,21 @@ public class Cliente {
 
 	private int codigo;
 	private String nombre;
-	private String email;
-	private String fechaAlta;
+	private String telefono;
 	private double saldo;
 	
 	public Cliente() {}
 	
-	public Cliente(String nombre, String email, String fechaAlta, double saldo) {
+	public Cliente(String nombre, String telefono, double saldo) {
 		this.nombre = nombre;
-		this.email = email;
-		this.fechaAlta = fechaAlta;
+		this.telefono = telefono;
 		this.saldo = saldo;
 	}
 	
-	public Cliente(int codigo, String nombre, String email, String fechaAlta, double saldo) {
+	public Cliente(int codigo, String nombre, String telefono, double saldo) {
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.email = email;
-		this.fechaAlta = fechaAlta;
+		this.telefono = telefono;
 		this.saldo = saldo;
 	}
 	
@@ -39,24 +36,20 @@ public class Cliente {
 	public String getNombre() {return nombre;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
 	
-	public String getEmail() {return email;}
-	public void setEmail(String email) {this.email = email;}
-	
-	public String getFechaAlta() {return fechaAlta;}
-	public void setFechaAlta(String fechaAlta) {this.fechaAlta = fechaAlta;}
+	public String getTelefono() {return telefono;}
+	public void setTelefono(String telefono) {this.telefono = telefono;}
 	
 	public double getSaldo() {return saldo;}
 	public void setSaldo(double saldo) {this.saldo = saldo;}
 	
 	//INSERT
 	public boolean grabar() throws SQLException, IOException{
-		String sqlInsert = "INSERT INTO clientes (nombre, email, saldo, fecha_alta) VALUES (?, ?, ?, ?)";
+		String sqlInsert = "INSERT INTO clientes (nombre, telefono, saldo) VALUES (?, ?, ?)";
 		
 		try (Connection con = Conexion.getConexion();PreparedStatement pstmt = con.prepareStatement(sqlInsert)) {
 	        pstmt.setString(1, nombre);
-	        pstmt.setString(2, email);
+	        pstmt.setString(2, telefono);
 	        pstmt.setDouble(3, saldo);
-	        pstmt.setString(4, fechaAlta);
 	        
 	        return pstmt.executeUpdate() > 0;
 	    }
@@ -74,8 +67,7 @@ public class Cliente {
 					return new Cliente(
 							rs.getInt("codigo"),
 							rs.getString("nombre"),
-							rs.getString("email"),
-							rs.getString("fecha_alta"),
+							rs.getString("telefono"),
 							rs.getDouble("saldo")
 		            );	
 				}
@@ -122,8 +114,7 @@ public class Cliente {
 				Cliente cliente = new Cliente(
 				rs.getInt("codigo"),
 				rs.getString("nombre"),
-	            rs.getString("email"),
-	            rs.getString("fecha_alta"),
+	            rs.getString("telefono"),
 	            rs.getDouble("saldo"));
 				cList.add(cliente);
 			}
@@ -133,8 +124,8 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "ID: " + codigo + " | Nombre: " + nombre + " | Email: " + email 
-                + " | Saldo: " + saldo + "€ | Fecha Alta: " + fechaAlta;
+		return "ID: " + codigo + " | Nombre: " + nombre + " | Teléfono: " + telefono 
+                + " | Saldo: " + saldo + "€";
 	}
 	
 }

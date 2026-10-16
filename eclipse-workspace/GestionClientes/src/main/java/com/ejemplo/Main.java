@@ -16,8 +16,7 @@ public class Main {
 				int opcion = 0;
 				int codigo;
 				String nombre;
-				String email;
-				String fecha;
+				String telefono;
 	            double saldo;
 				
 				do {
@@ -36,14 +35,12 @@ public class Main {
 						case 1:
 							System.out.println("\nIntroduce el nombre: ");
 							nombre = sc.nextLine().trim();
-							System.out.println("Introduce el correo: ");
-							email = sc.nextLine().trim();
+							System.out.println("Introduce el teléfono: ");
+							telefono = sc.nextLine().trim();
 							System.out.println("Introduce el saldo: (ej: 450.00)");
 							saldo = Double.parseDouble(sc.nextLine().trim());
-							System.out.println("Introduce la fecha (ej: 2026-04-09)");
-							fecha = sc.nextLine().trim();
 							
-							Cliente nuevo = new Cliente(nombre, email, fecha, saldo);
+							Cliente nuevo = new Cliente(nombre, telefono, saldo);
 							
 							if (nuevo.grabar()) {
 								System.out.println("\nCliente insertado con éxito.\n");

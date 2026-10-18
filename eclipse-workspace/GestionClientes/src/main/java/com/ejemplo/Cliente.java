@@ -112,10 +112,10 @@ public class Cliente {
 			
 			while (rs.next()) {
 				Cliente cliente = new Cliente(
-				rs.getInt("codigo"),
-				rs.getString("nombre"),
-	            rs.getString("telefono"),
-	            rs.getDouble("saldo"));
+					rs.getInt("codigo"),
+					rs.getString("nombre"),
+		            rs.getString("telefono"),
+		            rs.getDouble("saldo"));
 				cList.add(cliente);
 			}
 		}

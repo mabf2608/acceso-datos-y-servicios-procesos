@@ -27,6 +27,8 @@ public class Main {
 					System.out.println("3. Modificar saldo.");
 					System.out.println("4. Borrar cliente");
 					System.out.println("5. Consultar lista de clientes.");
+					System.out.println("6. Abrir incidencia a un cliente.");
+					System.out.println("7. Cerrar incidencia.");
 					System.out.println("0. Salir");
 					System.out.println("-----------------------");
 					
@@ -101,6 +103,58 @@ public class Main {
 							}
 							System.out.println();
 							
+							break;
+						
+						case 6:
+							System.out.println("\nIntroduce el id del cliente que quiere abrir una incidencia: ");
+							codigo = Integer.parseInt(sc.nextLine().trim());
+							
+							if (Cliente.buscar(codigo) == null) {
+								System.out.println("\nNo se encontró ningún cliente con ese ID.\n");
+								break;
+							}
+							
+							List<Orden> abiertas = Orden.buscarAbiertasPorCliente(codigo);
+							if (!abiertas.isEmpty()) {
+								System.out.println("\nIncidencias abiertas actualmente para este cliente:\n");
+								for (Orden o : abiertas) {
+									System.out.println(o);
+								}
+							} else {
+								System.out.println("\nEl cliente no tiene incidencias abiertas actualmente.\n");
+							}
+							
+							System.out.println("\nIntroduce un asunto para la incidencia: ");
+							String asunto = sc.nextLine().trim();
+							System.out.println("\nIntroduce una descripción de la incidencia: ");
+							String descripcion = sc.nextLine().trim();
+							
+							Orden nuevaOrden = new Orden(codigo, asunto, descripcion);
+							if (nuevaOrden.abrirIncidencia()) {
+								System.out.println("\nIncidencia creada con éxito.\n");
+							} else {
+								System.out.println("\nNo se pudo crear la incidencia.\n");
+							}
+							break;
+						
+						case 7:
+							System.out.println("\nIntroduce el id de la incidencia a cerrar: ");
+							int codigoIncidencia = Integer.parseInt(sc.nextLine().trim());
+							System.out.println("\nIntroduce el id del cliente asociado: ");
+							int codigoCliente = Integer.parseInt(sc.nextLine().trim());
+							System.out.println("\nIntroduce el id del técnico que realiza el cierre: ");
+							int codigoTecnico = Integer.parseInt(sc.nextLine().trim());
+							System.out.println("\nIntroduce observaciones sobre la resolucion: ");
+							String observaciones = sc.nextLine().trim();
+							System.out.println("\nIntroduce el importe a pagar por el cliente (ej 540.00): ");
+							double importe = Double.parseDouble(sc.nextLine().trim());
+							
+							boolean cerrada = Orden.cerrarIncidencia(codigoIncidencia, codigoCliente, codigoTecnico, observaciones, importe);
+							if (cerrada) {
+								System.out.println("\nIncidencia cerrada y registrada con éxito.\n");
+							} else {
+								System.out.println("\nNo se pudo cerrar la incidencia. Comprueba que el código de incidencia y de cliente coincidan y que no estuviera cerrada previamente.\n");
+							}
 							break;
 							
 						case 0:

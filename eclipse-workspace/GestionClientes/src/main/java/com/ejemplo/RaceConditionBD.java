@@ -56,13 +56,8 @@ public class RaceConditionBD {
 					hilo.start();
 				}
 				
-				for (Thread h : hilos) {
-					try {
+				for (Thread h : hilos)
 						h.join();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
 				
 				Cliente clienteActualizado = Cliente.buscar(codigoCliente);
 				double saldoActualizado = clienteActualizado.getSaldo();
@@ -78,6 +73,8 @@ public class RaceConditionBD {
 				}
 				
 			} catch (IOException | SQLException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 	}

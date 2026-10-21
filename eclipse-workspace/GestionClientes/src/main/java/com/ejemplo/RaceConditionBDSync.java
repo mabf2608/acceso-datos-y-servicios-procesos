@@ -10,7 +10,7 @@ public class RaceConditionBDSync {
 
 	public static void main(String[] args) {
 			
-			int codigoCliente = 5;
+			int codigoCliente = 2;
 			int numeroHilos = 5;
 			int iteracionesPorHilo = 10;
 			double incremento = 10.0;

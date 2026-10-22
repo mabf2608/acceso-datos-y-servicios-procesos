@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RaceConditionBDSync {
+	
 	private static final Object lock = new Object();
-
 	public static void main(String[] args) {
 			
 			int codigoCliente = 2;

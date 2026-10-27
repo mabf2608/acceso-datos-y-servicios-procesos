@@ -21,7 +21,7 @@ public class Main {
 				
 				do {
 					
-					System.out.println("----- CRUD CON DAO -----");
+					System.out.println("----- CRUD CON DAO CLIENTES -----");
 					System.out.println("1. Dar de alta a un cliente.");
 					System.out.println("2. Consultar un cliente.");
 					System.out.println("3. Modificar saldo.");
